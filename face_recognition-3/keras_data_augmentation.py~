@@ -1,0 +1,69 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import tensorflow as tf
+import os
+from tensorflow.keras import layers
+from PIL import Image
+import cv2
+import subprocess
+from keras.preprocessing.image import save_img
+import time
+
+def augment(path):
+    image = Image.open(path)
+
+    IMG_SIZE = 250
+
+    resize_and_rescale = tf.keras.Sequential([
+        layers.Resizing(IMG_SIZE, IMG_SIZE),
+        layers.Rescaling(1./255)
+    ])
+
+    result = resize_and_rescale(image)
+
+    ### Data augmentation ###
+
+    data_augmentation = tf.keras.Sequential([
+        layers.RandomFlip("horizontal"),
+        layers.RandomRotation(0),
+    ])
+
+    
+    #result1 = data_augmentation(result)
+    
+    augt = [data_augmentation(result) for i in range(9)]
+
+    plt.figure(figsize=(10, 10))
+    for i in range(len(augt)):
+        ax = plt.subplot(3, 3, i + 1)
+        plt.imshow(augt[i])
+    plt.show()
+
+    folder = '/'.join(path.split('/')[0:2])
+    file_png = path.split('/')[-1]
+    fname = file_png.split('.')[0]
+    new_path = "images/keras/"
+
+    verif = os.listdir(new_path)
+
+    if fname in verif :
+        for i in range(len(augt)):
+            save_img(new_path+fname+'/'+fname+'_'+str(i)+'.png',augt[i])
+            #pil_image = Image.fromarray(augt[i])
+            #pil_image.save(new_path+fname+'/'+fname+'_'+str(i)+'.png',augt[i])
+    else : 
+        subprocess.Popen("mkdir "+new_path+fname,shell=True)
+        time.sleep(1)
+        for i in range(len(augt)):
+            save_img(new_path+fname+'/'+fname+'_'+str(i)+'.png',augt[i])
+            #pil_image = Image.fromarray(augt[i])
+            #pil_image.save(new_path+fname+'/'+fname+'_'+str(i)+'.png',augt[i])
+    return
+
+
+dataset = os.listdir("images/samples")
+for i in range(len(dataset)):
+    augment("images/samples/"+dataset[i])
+
+
+

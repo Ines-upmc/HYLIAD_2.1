@@ -1,0 +1,19 @@
+[group teen-a]
+<label for="name">choisissez la spécialité</label>
+<li>  [checkbox* your-specialty  "Cycle Préparatoire MP" "Cycle Préparatoire Intégré MPI" ] </li>
+[/group]
+
+[group teen-b]
+<label for="name">choisissez la spécialité</label>
+<li>  [checkbox your-specialty "Génie logiciel" "Big Data et Business Intelligence" "Sécurité des Systèmes d’Information et Réseaux" "Cloud Computing et Virtualisation"  ] </li>
+[/group]
+
+[group teen-c]
+<label for="name">choisissez la spécialité</label>
+<li>  [checkbox your-specialty "Génie logiciel et systèmes d’Informatique" "Business Intelligence" "Big Data" "Ingénierie des réseaux et Systèmes" "Comptabilité" "Finance" "Marketing" "Gestion des Ressources Humaines" ] </li>
+[/group]
+
+[group teen-d]
+<label for="name">choisissez la spécialité</label>
+<li>  [checkbox your-specialty "Génie Logiciel et Test" "Big Data" "Business Intelligence" "Sécurité des Systèmes Informatiques et Réseaux" "Comptabilité" "Gestion de Projets"  ] </li>
+[/group]

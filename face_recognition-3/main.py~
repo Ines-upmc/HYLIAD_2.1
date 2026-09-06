@@ -1,0 +1,6 @@
+import parse_csv
+import face_rec
+
+
+if __name__ == '__main__':
+    

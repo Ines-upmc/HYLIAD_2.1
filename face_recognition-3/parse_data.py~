@@ -1,0 +1,53 @@
+import pandas as pd
+#import textwrap
+
+def parse_csv(fname):
+    df = pd.read_csv(fname)
+    c = list(df.columns)
+
+    name = list(df['Name'])
+    birthday = list(df['Birthday'])
+    age = list(df['Age'])
+    profession = list(df['Profession'])
+    mac = list(df['MAC'])
+    height = list(df['Height'])
+    weight = list(df['Weight'])
+    eye = list(df['Eye_abbreviation'])
+    sex = list(df['Sex'])
+    ethnicity = list(df['Country_abbreviated'])
+    file_name = list(df['File_name'])
+    biography = list(df['Record'])
+    biography = ["BUREAU RECORD- "+biography[i] for i in range(len(biography))]
+    '''
+    def fasta(txt):
+        des = textwrap.wrap(txt, 55)
+        des_ = '\n'.join(des)
+        return des_
+    
+    biography = [fasta(biography[i]) for i in range(len(biography))] 
+    '''
+    return name, birthday, age, profession, mac, height, weight, eye, sex, ethnicity, file_name, biography
+
+#parse_csv("database.csv")
+
+import random
+
+def parse_database_logs(fname):
+    df = pd.read_csv(fname)
+    d_ = range(1,30)
+    d_ = ["0"+str(d_[i]) for i in range(9)]+[str(d_[i]) for i in range(9,len(d_))]
+    dates = [d_[i]+"/04/2022" for i in range(len(d_))]
+    h_entree = random.randint(10,16)
+    m_entree = random.randint(10,59)
+    t_entree = str(h_entree)+':'+m_entree
+    h_sorti = random.randint(16,21)
+    m_sorti = random.randint(10,59)
+    t_sorti = str(h_sorti)+':'+str(m_sorti)
+
+    def generate_daily():
+        
+        return
+    
+    return
+
+parse_database_logs("database_students.csv")

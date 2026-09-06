@@ -1,0 +1,39 @@
+cd flask_app
+python3 -m venv venv
+source venv/bin/activate
+
+##Nvidia
+sudo fuser -v /dev/nvidia*
+sudo kill -9 PID
+
+
+###################################################################################
+## To install packages in the virtual environment
+#find the path in main.py
+
+import sys
+sys.executable
+
+#Run pip with the following command
+/home/ubuntu/3-HYLIAD 2.1\ /face_recognition-3/venv/bin/python3 -m pip install scipy
+
+###################################################################################
+################### face_rec.py (Face Recognition in streaming) ###################
+###################################################################################
+
+Reconnaissance faciale en temps réel avec le module face_recognition.py et cv2
+Les images qui qui ont été identifiées sur webcam sont enregistrés dans le dossier tmp_images/name_date-hour.jpg et le fichier image est nommé en incluant le nom de la personne identifiée, la date et l'heure pour plus d'analyse (data augmentation, keras, FaceNet, tensorflow etc ...) et powerBI.
+
+###################################################################################
+################### parse_data.py #################################################
+###################################################################################
+Parsage du fichier database.csv incluant toutes les informations des personnes à identifier (nom, age, profession etc ...).
+
+###################################################################################
+################### face_rec_keras.py (Face Recognition offline) ##################
+###################################################################################
+Implémentation de l'algorithme Deep learning avec keras, tensorflow etc ... sur des captures d'image
+s de caméra de surveillance.
+
+
+
